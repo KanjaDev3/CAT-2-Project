@@ -21,6 +21,7 @@
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#collection">Collection</a></li>
+            <li><a href="#wishlist">Wishlist</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
         </nav>
@@ -31,11 +32,12 @@
 
       <!-- HERO -->
       <section class="hero" id="home">
-        <img src="images/banner.jpg" alt="ElegantManke shop banner" class="banner-img" />
+        <img src="images/banner.jpg" alt="ElegantManke shop banner" class="banner-img" id="banner-img" />
         <div class="hero-text">
           <h2>Dress With <span>Confidence</span></h2>
           <p>Premium menswear for the modern gentleman. Located in the heart of Eastleigh, Nairobi.</p>
           <a href="#collection" class="btn">View Collection</a>
+          <p class="banner-caption" id="banner-caption">Click the banner to learn more.</p>
         </div>
       </section>
 
@@ -83,61 +85,14 @@
           <h2 class="section-title">Our Collection</h2>
           <p class="section-sub">Handpicked styles for the distinguished gentleman</p>
 
-          <div class="products-grid">
-                <img src="images/product1.jpg" alt="Men's formal suit" />
-                  <p>Visit us in store</p>
-                </div>
-              </div>
-              <div class="product-info">
-                <h3>Full Outfits</h3>
-                <p>Comfortable fits from casual to formal</p>
-              </div>
-            </div>
-
-            <div class="product-card">
-              <div class="product-img">
-                <img src="images/product2.jpg" alt="Men's casual shirts" />
-                <div class="product-overlay">
-                  <p>Visit us in store</p>
-                </div>
-              </div>
-              <div class="product-info">
-                <h3>Casual Fits</h3>
-                <p>Complete looks, styled and ready to wear</p>
-              </div>
-            </div>
-
-            <div class="product-card">
-              <div class="product-img">
-                <img src="images/product3.jpg" alt="Men's trousers" />
-                <div class="product-overlay">
-                  <p>Visit us in store</p>
-                </div>
-              </div>
-              <div class="product-info">
-                <h3>Shirts & Shorts</h3>
-                <p>Sharp, tailored fits for every occasion</p>
-              </div>
-            </div>
-
-            <div class="product-card">
-              <div class="product-img">
-                <img src="images/product4.jpg" alt="Men's outfit set" />
-                <div class="product-overlay">
-                  <p>Visit us in store</p>
-                </div>
-              </div>
-              <div class="product-info">
-                <h3>Casual Sweaters</h3>
-                <p>Relaxed styles that never compromise on class</p>
-              </div>
-            </div>
+          <div class="products-grid" id="products-grid">
+            <!-- Products rendered by JS -->
           </div>
         </div>
       </section>
 
-<!-- WISHLIST -->
-      <section class="wishlist">
+      <!-- WISHLIST -->
+      <section class="wishlist" id="wishlist">
         <div class="container">
           <h2 class="section-title">Your Wishlist</h2>
           <p class="section-sub">Add items you'd like to try on your next visit</p>
@@ -150,7 +105,7 @@
           <ul id="wishlist-list"></ul>
         </div>
       </section>
-      
+
       <!-- WHY US -->
       <section class="why-us">
         <div class="container">
@@ -179,7 +134,7 @@
           <div class="contact-grid">
             <div class="contact-details">
               <h3>Get In Touch</h3>
-              <p>We would love to hear from you. Come visit us at the shop or reach out below.</p>
+              <p>We would love to hear from you. Come visit us at the shop or send us a message below.</p>
 
               <div class="contact-item">
                 <div>
@@ -204,12 +159,14 @@
             </div>
 
             <div class="contact-box">
-              <h3>Visit Our Shop</h3>
-              <div class="map-box">
-                <p>Amal Shopping Mall</p>
-                <p>Shop F117, Eastleigh</p>
-                <p>Nairobi, Kenya</p>
-              </div>
+              <h3>Send Us a Message</h3>
+              <form id="contact-form">
+                <input type="text" id="contact-name" placeholder="Your name" />
+                <input type="email" id="contact-email" placeholder="Your email" />
+                <textarea id="contact-message" placeholder="Your message" rows="4"></textarea>
+                <button type="submit" class="btn-outline">Send Message</button>
+                <p id="contact-feedback"></p>
+              </form>
             </div>
           </div>
         </div>
@@ -225,6 +182,7 @@
         <p>&copy; 2026 ElegantManke. All rights reserved.</p>
       </div>
     </footer>
+
     <script src="js/script.js"></script>
   </body>
 </html>

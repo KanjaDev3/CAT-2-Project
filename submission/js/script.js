@@ -1,9 +1,3 @@
-// CAT 2 JavaScript features
-
-// ============================
-// FEATURE 1: Loop-rendered content
-// Products stored in an array of objects and rendered into the DOM with forEach()
-// ============================
 const products = [
   {
     name: "Full Outfits",
@@ -52,11 +46,6 @@ products.forEach(function (product) {
   productsGrid.appendChild(card);
 });
 
-// ============================
-// FEATURE 2: Dynamically add & remove elements (Wishlist)
-// User types an item, clicks Add, it appears in the list with a Remove button.
-// createElement() and appendChild() to add, remove() to remove.
-// ============================
 const wishlistInput = document.getElementById("wishlist-input");
 const wishlistAddBtn = document.getElementById("wishlist-add-btn");
 const wishlistList = document.getElementById("wishlist-list");
@@ -73,6 +62,7 @@ function addWishlistItem(text) {
   removeBtn.type = "button";
   removeBtn.addEventListener("click", function () {
     li.remove();
+    saveWishlist();
   });
 
   li.appendChild(span);
@@ -87,4 +77,66 @@ wishlistAddBtn.addEventListener("click", function () {
   }
   addWishlistItem(value);
   wishlistInput.value = "";
+  saveWishlist();
+});
+
+const contactForm = document.getElementById("contact-form");
+const contactName = document.getElementById("contact-name");
+const contactEmail = document.getElementById("contact-email");
+const contactMessage = document.getElementById("contact-message");
+const contactFeedback = document.getElementById("contact-feedback");
+
+contactForm.addEventListener("submit", function (event) {
+  event.preventDefault();
+
+  const nameValue = contactName.value.trim();
+  const emailValue = contactEmail.value.trim();
+  const messageValue = contactMessage.value.trim();
+
+  if (nameValue === "" || emailValue === "" || messageValue === "") {
+    contactFeedback.textContent = "Please fill in all fields before sending.";
+    contactFeedback.style.color = "#c0392b";
+    return;
+  }
+
+  if (emailValue.indexOf("@") === -1 || emailValue.indexOf(".") === -1) {
+    contactFeedback.textContent = "Please enter a valid email address.";
+    contactFeedback.style.color = "#c0392b";
+    return;
+  }
+
+  contactFeedback.textContent = "Thank you, " + nameValue + "! Your message has been received.";
+  contactFeedback.style.color = "#27ae60";
+
+  contactName.value = "";
+  contactEmail.value = "";
+  contactMessage.value = "";
+});
+
+function saveWishlist() {
+  const items = [];
+  const listItems = wishlistList.querySelectorAll("li span");
+  listItems.forEach(function (span) {
+    items.push(span.textContent);
+  });
+  localStorage.setItem("elegantmanke-wishlist", JSON.stringify(items));
+}
+
+function loadWishlist() {
+  const saved = localStorage.getItem("elegantmanke-wishlist");
+  if (saved) {
+    const items = JSON.parse(saved);
+    items.forEach(function (item) {
+      addWishlistItem(item);
+    });
+  }
+}
+
+loadWishlist();
+
+const bannerImg = document.getElementById("banner-img");
+const bannerCaption = document.getElementById("banner-caption");
+
+bannerImg.addEventListener("click", function () {
+  bannerCaption.classList.toggle("visible");
 });
