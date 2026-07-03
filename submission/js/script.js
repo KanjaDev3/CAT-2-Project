@@ -51,3 +51,40 @@ products.forEach(function (product) {
 
   productsGrid.appendChild(card);
 });
+
+// ============================
+// FEATURE 2: Dynamically add & remove elements (Wishlist)
+// User types an item, clicks Add, it appears in the list with a Remove button.
+// createElement() and appendChild() to add, remove() to remove.
+// ============================
+const wishlistInput = document.getElementById("wishlist-input");
+const wishlistAddBtn = document.getElementById("wishlist-add-btn");
+const wishlistList = document.getElementById("wishlist-list");
+
+function addWishlistItem(text) {
+  const li = document.createElement("li");
+
+  const span = document.createElement("span");
+  span.textContent = text;
+
+  const removeBtn = document.createElement("button");
+  removeBtn.textContent = "Remove";
+  removeBtn.className = "wishlist-remove-btn";
+  removeBtn.type = "button";
+  removeBtn.addEventListener("click", function () {
+    li.remove();
+  });
+
+  li.appendChild(span);
+  li.appendChild(removeBtn);
+  wishlistList.appendChild(li);
+}
+
+wishlistAddBtn.addEventListener("click", function () {
+  const value = wishlistInput.value.trim();
+  if (value === "") {
+    return;
+  }
+  addWishlistItem(value);
+  wishlistInput.value = "";
+});
